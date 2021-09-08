@@ -1,11 +1,8 @@
-# A1_html_injection_refleted_get
+## HTML injection
 
 
 
-## HTML 인젝션이란?
+웹 어플리케이션에 필터링 기능이 미흡할 시 공격자가 악의적인 데이터를 주입하여 발생되는 취약점.
 
+> 인젝션을 이용해 구글에 떠돌아다니는 웹 쉘 코드를 주입하여 간단하게 쉘 획득 가능.
 
-
-![vj3QxtkP18](C:\Users\MrBanana\Documents\ShareX\Screenshots\2021-09\vj3QxtkP18.png)
-
-### 제목 2
