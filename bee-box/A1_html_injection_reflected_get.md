@@ -2,17 +2,17 @@
 
 
 
-웹 어플리케이션에 필터링 기능이 미흡할 시 공격자가 악의적인 데이터를 주입하여 발생되는 취약점.
+웹 어플리케이션의 필터링 기능이 미흡할 시 공격자가 악의적인 데이터를 주입하여 발생되는 취약점.
 
 `Reflected` 는 악성 스크립트를 주입한 동시에 결과가 반영된다. **반사된 것 처럼**
 
-`Stored` 는 악성 스크립트를 서버에 **저장** 후 다른 사용자(피해자)가 접근 시 공격이 __수행된다.__
+`Stored` 는 악성 스크립트를 서버에 **저장** 후 다른 사용자(피해자)가 접근 시 공격이 수행된다.
 
 ## Reflected(GET)
 
 
 
-#### **low**
+#### low
 
 아무런 필터링이 없어 악성 스크립트 주입이 가능하다.
 
@@ -20,9 +20,7 @@
 
 ![RQKUpqk1Ag](https://user-images.githubusercontent.com/79683414/132444632-31557f14-6496-4fa3-bc26-179e413fac4f.png)
 
-
-
-#### **medium**
+#### medium
 
 low 와 같은 페이로드를 입력했을 때의 결과이다.
 
@@ -75,7 +73,7 @@ function htmli($data)
 
 security level > low : 0, medium : 1, high : 2 임을 알 수 있다. `xss_check_1` 과 `xss_check_3` 이 각각 medium 과 high 에 적용되어 있다.
 
-_funtions_external.php - xss_check_1_
+_funtions_external.php_ - xss_check_1
 
 ```php
 function xss_check_1($data)
@@ -113,4 +111,25 @@ Input : %3Cscript%3Ealert("Hacked!!")%3C/script%3E
 
 > **URL encode**
 >
-> URL 에는 띄어쓰기나 특수 문자가 
+> URL은 ASCII 문자로만 이루어져 있는데, 안전하지 않은 문자를 포함하는 경우가 있다. 이를 위해 URL encode 를 사용하여 유효하지 않은 문자를 `%[hex]` 형식으로 변환한다.
+
+#### __high__
+
+_funtions_external.php_ - xss_check_3
+
+```php
+function xss_check_3($data, $encoding = "UTF-8")
+{
+
+    // htmlspecialchars - converts special characters to HTML entities    
+    // '&' (ampersand) becomes '&amp;' 
+    // '"' (double quote) becomes '&quot;' when ENT_NOQUOTES is not set
+    // "'" (single quote) becomes '&#039;' (or &apos;) only when ENT_QUOTES is set
+    // '<' (less than) becomes '&lt;'
+    // '>' (greater than) becomes '&gt;'  
+    
+    return htmlspecialchars($data, ENT_QUOTES, $encoding);
+       
+}
+```
+
