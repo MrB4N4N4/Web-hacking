@@ -30,6 +30,8 @@ low 와 같은 페이로드를 입력했을 때의 결과이다.
 
 입력한 내용이 그대로 출력된다. 어떤 식의 필터링이 작용한 듯 한데 소스코드를 살펴보자.
 
+
+
 ___/var/www/bWAPP/htmli_get.php___
 
 ```php
@@ -75,6 +77,8 @@ function htmli($data)
 
 security level > low : 0, medium : 1, high : 2 임을 알 수 있다. `xss_check_1` 과 `xss_check_3` 이 각각 medium 과 high 에 적용되어 있다.
 
+
+
 ___funtions_external.php_ - xss_check_1__
 
 ```php
@@ -105,17 +109,27 @@ str_replace 를 이용해 "<", ">" 를 필터링 한 후 `urldecode()` 를 실�
 
 
 
+
+
 __Input : %3Cscript%3Ealert("Hacked!!")%3C/script%3E__
+
+
 
 ![RsVXRRxjwD](https://user-images.githubusercontent.com/79683414/132603215-be7d17eb-078c-4693-9d84-07ab6dbfdade.png)
 
 ![RQKUpqk1Ag](https://user-images.githubusercontent.com/79683414/132444632-31557f14-6496-4fa3-bc26-179e413fac4f.png)
+
+
+
+
 
 > **URL encode**
 >
 > URL은 ASCII 문자로만 이루어져 있는데, 안전하지 않은 문자를 포함하는 경우가 있다. 이를 위해 URL encode 를 사용하여 유효하지 않은 문자를 `%[hex][hex]` 형식으로 변환한다.
 
 ___
+
+
 
 ### __high__
 
@@ -137,11 +151,17 @@ function xss_check_3($data, $encoding = "UTF-8")
 }
 ```
 
+
+
 `htmlspecialchars` 함수는 주석의 문자들을 Html entity 로 변환 시켜 준다. 
+
+
 
 > __Html entity__
 >
 >  https://www.w3schools.com/php/func_string_htmlspecialchars.asp
+
+
 
 
 
