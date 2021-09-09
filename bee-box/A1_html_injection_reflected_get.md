@@ -12,7 +12,7 @@
 
 
 
-#### low
+### __low__
 
 아무런 필터링이 없어 악성 스크립트 주입이 가능하다.
 
@@ -20,7 +20,7 @@
 
 ![RQKUpqk1Ag](https://user-images.githubusercontent.com/79683414/132444632-31557f14-6496-4fa3-bc26-179e413fac4f.png)
 
-#### medium
+### __medium__
 
 low 와 같은 페이로드를 입력했을 때의 결과이다.
 
@@ -113,7 +113,7 @@ Input : %3Cscript%3Ealert("Hacked!!")%3C/script%3E
 >
 > URL은 ASCII 문자로만 이루어져 있는데, 안전하지 않은 문자를 포함하는 경우가 있다. 이를 위해 URL encode 를 사용하여 유효하지 않은 문자를 `%[hex]` 형식으로 변환한다.
 
-#### __high__
+### __high__
 
 _funtions_external.php_ - xss_check_3
 
