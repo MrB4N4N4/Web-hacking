@@ -4,9 +4,9 @@
 
 웹 어플리케이션에 필터링 기능이 미흡할 시 공격자가 악의적인 데이터를 주입하여 발생되는 취약점.
 
-`Reflected` 는 악성 스크립트를 주입한 동시에 결과가 반영된다. _반사된 것 처럼_
+`Reflected` 는 악성 스크립트를 주입한 동시에 결과가 반영된다. **반사된 것 처럼**
 
-`Stored` 는 악성 스크립트를 서버에 _저장_ 후 다른 사용자(피해자)가 접근 시 공격이 수행된다.
+`Stored` 는 악성 스크립트를 서버에 **저장** 후 다른 사용자(피해자)가 접근 시 공격이 __수행된다.__
 
 ## Reflected(GET)
 
@@ -30,3 +30,87 @@ low 와 같은 페이로드를 입력했을 때의 결과이다.
 
 입력한 내용이 그대로 출력된다. 어떤 식의 필터링이 작용한 듯 한데 소스코드를 살펴보자.
 
+_/var/www/bWAPP/htmli_get.php_
+
+```php
+<?php
+    
+include("security.php");
+include("security_level_check.php");
+include("functions_external.php");
+include("selections.php");
+
+function htmli($data)
+{
+         
+    switch($_COOKIE["security_level"])
+    {
+        
+        case "0" : 
+            
+            $data = no_check($data);            
+            break;
+        
+        case "1" :
+            
+            $data = xss_check_1($data);
+            break;
+        
+        case "2" :            
+                       
+            $data = xss_check_3($data);            
+            break;
+        
+        default : 
+            
+            $data = no_check($data);            
+            break;   
+
+    }       
+
+    return $data;
+
+}
+```
+
+security level > low : 0, medium : 1, high : 2 임을 알 수 있다. `xss_check_1` 과 `xss_check_3` 이 각각 medium 과 high 에 적용되어 있다.
+
+_funtions_external.php - xss_check_1_
+
+```php
+function xss_check_1($data)
+{
+    
+    // Converts only "<" and ">" to HTLM entities    
+    $input = str_replace("<", "&lt;", $data);
+    $input = str_replace(">", "&gt;", $input);
+    
+    // Failure is an option
+    // Bypasses double encoding attacks   
+    // <script>alert(0)</script>
+    // %3Cscript%3Ealert%280%29%3C%2Fscript%3E
+    // %253Cscript%253Ealert%25280%2529%253C%252Fscript%253E
+    $input = urldecode($input);
+    
+    return $input;
+    
+}
+```
+
+str_replace 를 이용해 "<", ">" 를 필터링 한 후 `urldecode()` 를 실행한다.
+
+따라서 "< ", ">" 만 encoding 해주면 될 듯 하다.
+
+![HuPGsFXBCQ](https://user-images.githubusercontent.com/79683414/132602990-1914adb3-b05e-49cb-a6fb-48fc4535924d.png)
+
+
+
+Input : %3Cscript%3Ealert("Hacked!!")%3C/script%3E
+
+![RsVXRRxjwD](https://user-images.githubusercontent.com/79683414/132603215-be7d17eb-078c-4693-9d84-07ab6dbfdade.png)
+
+![RQKUpqk1Ag](https://user-images.githubusercontent.com/79683414/132444632-31557f14-6496-4fa3-bc26-179e413fac4f.png)
+
+> **URL encode**
+>
+> URL 에는 띄어쓰기나 특수 문자가 
