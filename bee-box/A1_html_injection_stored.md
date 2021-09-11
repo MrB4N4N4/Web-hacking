@@ -4,9 +4,10 @@
 
 ![vmware_Vknn2XOaon](https://user-images.githubusercontent.com/79683414/132933770-e5828365-ccfe-4c08-b81b-2827d42c3586.png)
 
-## htmli_stored.php
+### htmli_stored.php
 
 ```php
+// htmli_stored.php
 function htmli($data)
 {
 
@@ -43,4 +44,21 @@ function htmli($data)
 
 }
 ```
+
+```php
+// funtions_external.php - sqli_check_3
+function sqli_check_3($link, $data)
+{
+   
+    return mysqli_real_escape_string($link, $data);
+    
+}
+
+```
+
+레벨에 관계 없이 sqli_check_3 함수의 mysqli_real_escape_string() 함수가 실행된다.
+
+> __mysqli_real_escape_string()__
+>
+> 
 
