@@ -1,6 +1,6 @@
 ## iFrame Injection
 
-iframe은 html 문서 안에 또 하나의 html 문서를 출력한다. 예를 들면 구글 홈페이지에 네이버 홈페이지 frame 을 띄울 수 있는 것이다. iframe의 크기를 0으로 하면 사용자가 악성 웹 사이트 접속하도록 유도할 수 있다.
+iframe은 html 문서 안에 또 하나의 html 문서를 출력한다. 예를 들면 구글 홈페이지에 네이버 홈페이지 frame 을 띄울 수 있는 것이다. iframe의 크기를 0으로 하면 보이지 않는 iframe 을 삽입 할 수 있다.
 
 </br>
 
