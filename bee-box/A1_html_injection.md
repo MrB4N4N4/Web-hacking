@@ -180,3 +180,28 @@ function xss_check_3($data, $encoding = "UTF-8")
 
 
 공격을 하기 위해선 `<script>` 와 같은 태그를 "return" 할 수 있어야 하는데 `htmlspecialchars` 로 인해 스크립트 주입이 불가능 하다.
+
+
+
+## Stored(blog)
+
+![vmware_Vknn2XOaon](https://user-images.githubusercontent.com/79683414/132933770-e5828365-ccfe-4c08-b81b-2827d42c3586.png)
+
+<br/><br/><br/><br/>
+
+![Code_y4yehR6UqV](https://user-images.githubusercontent.com/79683414/133543487-bff92f06-9ea1-4c95-b62d-aabedf88fa14.png)
+
+코드를 확인해 보면 reflected와 동일하게 `xss_check_3()` 함수로 필터링 되는 것을 알 수 있다.
+
+htmli_post.php 의 form 을 삽입해 보았다.
+
+<br/><br/><br/><br/>
+
+![chrome_gqPkHjj74g](https://user-images.githubusercontent.com/79683414/133543808-65fac733-0190-4d0a-b5b7-b779898d0808.png)
+
+html 인젝션을 막으려면,
+
+ php 에서 기본으로 제공되는 `htmlspecialchars`함수가 유용하다.
+
+메모...
+
