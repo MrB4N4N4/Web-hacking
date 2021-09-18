@@ -66,7 +66,3 @@ ifram에 다른 웹의 주소를 삽입해 봤는데 'connection refused'가 떠
 
 ![explorer_VBcj6WE3No](https://user-images.githubusercontent.com/79683414/133551623-eef8751a-eafa-4989-a7ce-360dc0a60a22.png)
 
-<br/><br/><br/><br/>
-
-## medium
-
