@@ -34,7 +34,7 @@ php injection 이 가능한지 테스트 해보기 위해  `';'`를 이용했다
 
 ![chrome_DBCgDN6MhD](https://user-images.githubusercontent.com/79683414/134445637-2231bcd6-b69d-4cd5-a6ff-01daf8edfa0d.png)
 
-pay : _msg;system("whoami)_
+pay : _msg;system("whoami")_
 
 php 코드가 성공적으로 삽입되었다.
 
