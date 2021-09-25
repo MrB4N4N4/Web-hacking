@@ -12,19 +12,18 @@ SSI 지시어는 다음과 같다.
 
 ```bash
 <!--#element attribute=value-->
+ex)  <!--#echo var="DATE_LOCAL"-->
 ```
 
-ex)  <!--#echo var="DATE_LOCAL"-->
 
-<br/>
-
-<br/>
-
-<br/>
 
 ![chrome_OvMbOtXp20](https://user-images.githubusercontent.com/79683414/134750698-6b8f686e-bdf4-409e-b9f1-a448292cd159.png)
 
+<br/>
 
+<br/>
+
+<br/>
 
 
 ## low
