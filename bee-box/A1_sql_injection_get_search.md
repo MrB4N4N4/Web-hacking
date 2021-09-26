@@ -52,7 +52,7 @@ UNION은,
 
 내 방식대로 표현하자면,
 
-테이블을 밑 변을 기준으로 합치는 것이다.
+테이블을 밑변을 기준으로 합치는 것이다.
 
 <br>
 
@@ -140,10 +140,10 @@ Column의 수가 같으면 정상적으로 결합되지만 그렇지 않은 경�
 
 ```bash
 database()		데이터베이스 이름
-user()		    현재 사용자의 아이디
-system_user()   최고 권한 사용자의 아이디
-@@version	    데이터베이스 서버의 버전
-@@datadir	    데이터베이스 서버가 존재하는 디렉터리
+user()		현재 사용자의 아이디
+system_user()		최고 권한 사용자의 아이디
+@@version		데이터베이스 서버의 버전
+@@datadir		데이터베이스 서버가 존재하는 디렉터리
 ```
 
 `0'UNION SELECT 1,database(),user(),system_user(),@@version,6,7#`
