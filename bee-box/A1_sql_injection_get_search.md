@@ -114,6 +114,10 @@ Column의 수가 같으면 정상적으로 결합되지만 그렇지 않은 경�
 
 ![WindowsTerminal_7WHyIDkWd4](https://user-images.githubusercontent.com/79683414/134790753-782bad8c-0a46-48e0-aca5-1fac985f7d23.png)
 
+<br>
+
+<br>
+
 ## low
 
 우선, `', 'or 1=1#` 을 이용해서 SQL Injection 이 가능한지 확인해보자.
@@ -158,9 +162,9 @@ system_user()		최고 권한 사용자의 아이디
 
 Column의 수를 알아냈으니 이제 원하는 테이블의 정보를 출력할 수 있다.
 
-그 테이블은 MySQL 에서 기본적으로 내장되어있는 information_schema 이다.
+여기서 출력할 테이블은 바로, MySQL 에서 기본적으로 내장되어있는 information_schema 이다.
 
-information_schema 에는 여러가지 정보가 저장되어 있는데 그 중, 테이블의 이름, 칼럼명 등을 이용하면 계정정보, 비밀번호, 메일 등의 정보를 알아낼 수 있다.
+information_schema 에는 여러가지 정보가 저장되어 있는데 그 중, 테이블의 이름, 칼럼명 등을 이용하면 계정정보, 비밀번호, 메일 등의 정보를 알아낼 수 있다.![WindowsTerminal_GDaud6c5L6](https://user-images.githubusercontent.com/79683414/134791408-e4040100-10f9-4992-ab33-d4807b0892ae.png)
 
 > __Information_schema table reference__
 >
@@ -170,3 +174,40 @@ information_schema 에는 여러가지 정보가 저장되어 있는데 그 중,
 
 <br>
 
+information_schema.tables 에는 모든 테이블들의 이름이 저장된 "table_name" 칼럼이 있다.
+
+`0' UNION SELECT 1,table_name,3,4,5,6,7 FROM information_schema.tables#`
+
+![chrome_lXKA7Ckbwx](https://user-images.githubusercontent.com/79683414/134791485-70dca5d0-cc50-4276-870d-1aad9827c010.png)
+
+<br>
+
+<br>
+
+이렇게 모든 테이블의 이름이 출력되는데, 계정 정보가 저장되어 있는 user 테이블을 확인해 보자.
+
+information_schema.columns 에는 모든 테이블의 column 명이 저장된 column_name 칼럼이 있다.
+
+`0' UNION SELECT 1,column_name,3,4,5,6,7 FROM information_schema.columns WHERE table_name='users'#`
+
+![chrome_qDiDoal6g5](https://user-images.githubusercontent.com/79683414/134791580-d317428b-118e-4510-a1c1-b704820f05c5.png)
+
+
+
+<br>
+
+<br>
+
+이렇게 user 테이블의 칼럼 정보를 획득했다.
+
+다음은 원하는 정보를 출력해보자.
+
+`0' UNION SELECT 1,concat(id,login),password,secret,email,activation_code,7 FROM users #`
+
+![chrome_3PES9myt7j](https://user-images.githubusercontent.com/79683414/134791632-aa999466-cb17-43a4-934a-a7cab1666d98.png)
+
+<br>
+
+<br>
+
+UNION 과 Information_schema 를 적절히 활용하면 원하는 정보를 획득 할 수 있다.
