@@ -58,7 +58,7 @@ UNION은,
 
 <br>
 
-칼럼의 수가 다른 경우
+_칼럼의 수가 다른 경우_
 
 ![Hwp_Int2BuJ1pI](https://user-images.githubusercontent.com/79683414/134789893-86af1114-62da-4643-b260-06cfbbc1bd43.png)
 
@@ -66,7 +66,7 @@ UNION은,
 
 <br>
 
-칼럼의 수가 같은 경우
+_칼럼의 수가 같은 경우_
 
 ![Hwp_qdavP8mKoT](https://user-images.githubusercontent.com/79683414/134789902-59ba530f-c37c-4099-a7ad-05cd0fb0713e.png)
 
@@ -76,15 +76,21 @@ UNION은,
 
 앞서 "UNION을 이용하면 원하는테이블의 정보를 출력할 수 있다"고 언급했는데,
 
-이번 문제에서 사용된 QUERY 를 보면서 이해해보자.
+이번 문제에서 사용된 쿼리를 보면서 이해해보자.
+
+<br>
+
+<br>
 
 `SELECT ???(column) FROM ???(table) WHERE title='<user_input>'...`
 
 <br>
 
+<br>
+
 Input으로 ` 0' UNION SELECT ??? FROM user ...#` 을 입력하면
 
-Query 는 다음과 같다.
+쿼리는 다음과 같다.
 
 `SELECT ???(column) From ???(table) WHERE title='0' UNION SELECT ??? FROM user ...#`
 
