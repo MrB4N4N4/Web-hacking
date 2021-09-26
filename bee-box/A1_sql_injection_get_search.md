@@ -96,6 +96,8 @@ Input으로 ` 0' UNION SELECT ??? FROM user ...#` 을 입력하면
 
 <br>
 
+<br>
+
 ___두 SELECT 의 column의 수가 같다면___,
 
 첫 번째 SELECT 의 결과는 EMPTY 이므로, 두 번째 SELECT 의, user table의 결과만 출력될 것이다.
