@@ -80,7 +80,7 @@ password엔 __md5 결과값이 injection 문자열인 값__을 입력해야 하�
 
 ## False sql injection
 
-간결한 input을 찾던 중 우연히`False sql injection` 자료를 읽게되었다. 아직 sql injection 의 지식이 콩만한 상태라 mysql 에서는 __False 값(0)을 넣어서 injection 이 가능하다__는 사실을 처음 알게 되었다. 따라서 input의 결과가  `Boolean` 이면 되는 것이다.
+간결한 input을 찾던 중 우연히`False sql injection` 자료를 읽게되었다. 아직 sql injection 의 지식이 콩만한 상태라 mysql 에서는 __False 값(0)을 넣어서 injection 이 가능하다__는 사실을 처음 알게 되었다. 
 
 > False sql injection - https://blog.pages.kr/1237
 
