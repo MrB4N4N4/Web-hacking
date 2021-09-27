@@ -219,3 +219,10 @@ information_schema.columns 에는 모든 테이블의 column 명이 저장된 co
 <br>
 
 UNION 과 Information_schema 를 적절히 활용하면 원하는 정보를 획득 할 수 있다.
+
+<br>
+
+<br>
+
+## medium/high
+
