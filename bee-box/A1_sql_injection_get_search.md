@@ -4,7 +4,7 @@
 
 ## Index
 
-- [Concept of SQL injection](#sql injection 이란)
+- [Concept of SQL injection](#sql-injection-이란)
 
 - 
 
