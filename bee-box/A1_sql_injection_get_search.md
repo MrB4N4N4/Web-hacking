@@ -306,7 +306,7 @@ Bee-Box에서 확인해본 결과 `secure_file_priv` 옵션이 비활성화 되�
 
 <br><br>
 
-Directory Listing 취약점은 URL에 특정 Directory를 입력했을 때(Directory이므로 `\` 로 끝난다.),
+Directory Listing 취약점은 URL에 특정 Directory를 입력했을 때(Directory이므로 `/` 로 끝난다.),
 
 해당 경로의 모든 파일이 Listing 되는 취약점이다.
 
