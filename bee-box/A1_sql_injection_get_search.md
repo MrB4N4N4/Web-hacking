@@ -226,3 +226,33 @@ UNION 과 Information_schema 를 적절히 활용하면 원하는 정보를 획�
 
 ## medium/high
 
+_sqli_1.php_
+
+![Code_4gewNYMxPp](https://user-images.githubusercontent.com/79683414/135019163-81a73b95-4673-4cd6-808e-368cff48e36f.png)
+
+<br>
+
+_fuctions_external.php_
+
+![notepad++_c2RB1s7NLp](https://user-images.githubusercontent.com/79683414/135019246-820f53aa-8c4d-44a2-96ea-687fadbe1ee9.png)
+
+<br><br>
+
+medium 과 high 에는 각각 addslashes(), mysql_real_escape_string() 이 적용되어 있다.
+
+두 함수 모두 특정 문자의 앞에 backslash"\\"를 추가하여 escape 시킨다.
+
+escape 시키는 문자는 `', ", \, NULL` 이 공통적이고
+
+mysql_real_escape_string() 함수는 `\n, \r, \x1a` 를 추가로 escape 한다.
+
+> addslashes() : https://www.php.net/manual/en/function.addslashes.php
+>
+> mysql_real_escape_string() : https://www.php.net/manual/en/function.mysql-real-escape-string.php
+
+
+
+<br><br>
+
+두 함수 모두 MySQL 에서 사용하는 특수문자를 SQL 문법으로 인식하지 못하도록 만들기 때문에 Injection 공격을 하는 것은 불가능하다.
+
