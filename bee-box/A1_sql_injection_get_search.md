@@ -6,7 +6,10 @@
 
 - [Concept of SQL injection](#sql-injection-이란)
 
-- 
+- [What is UNION?](#UNION-?)
+- [low](#low)
+- [medium/high](#medium/high)
+- [Advanced](#advanced)
 
 ### _SQL Injection 이란_
 
@@ -262,3 +265,8 @@ mysql_real_escape_string() 함수는 `\n, \r, \x1a` 를 추가로 escape 한다.
 
 두 함수 모두 MySQL 에서 사용하는 특수문자를 SQL 문법으로 인식하지 못하도록 만들기 때문에 Injection 공격을 하는 것은 불가능하다.
 
+<br><br>
+
+## Advanced
+
+이번 섹션에서 접한 초 재밌는 부분이다.
