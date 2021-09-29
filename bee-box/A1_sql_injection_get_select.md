@@ -43,3 +43,10 @@ SELECT ??? FROM movies WHERE id=<user_input>
 따라서, 공격 방법은 Search에서 했던 것과 동일하되, `'` 만 빼주면 된다.
 
 ![chrome_AIfu8R5cx4](https://user-images.githubusercontent.com/79683414/135192139-b1be173f-1e04-4cb7-9109-64b08a08c329.png)
+
+## medium/high
+
+medium 단계에는 Select의 mysql_real_escape_string() 이 적용되어있고
+
+high는 새로운 내용이었다. high 단계에서는 "header(Location:sqli_2-ps.php)"가 적용되어있는데 해당 코드를 살펴보자.
+
