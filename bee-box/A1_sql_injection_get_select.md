@@ -50,3 +50,55 @@ medium 단계에는 Select의 mysql_real_escape_string() 이 적용되어있고
 
 high는 새로운 내용이었다. high 단계에서는 "header(Location:sqli_2-ps.php)"가 적용되어있는데 해당 코드를 살펴보자.
 
+![Code_OGuW8SmouH](https://user-images.githubusercontent.com/79683414/135407581-d4fb198b-b5c3-4f9a-9e99-4a2c7cbbb8a5.png)
+
+<br><br>
+
+SQL 문을 그대로 전달하는 이전 단계들과는 달리 mysqli::bind_param() 메소드가 쓰였다.
+
+이 메소드는 변수를 Bind 해주는 기능을 하는데 간단히 말하자면,
+
+위의 SQL의 마지막 부분의 "?" 에 id 값을 입력해준다.
+
+조금 더 깊은 이해를 위해 테스트 해보자.
+
+<br><br>![vmware_IUpkFUcQfy](https://user-images.githubusercontent.com/79683414/135410185-45003111-b16d-4936-8c49-193c64f18087.png)
+
+테스트 용도로 생성한 Database 이다.
+
+id, pass, lan 칼럼이 존재한다.
+
+<br>
+
+```php
+<?php
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+$link = new mysqli("localhost", "root", "rudgns23", "lab");
+
+$stmt = $link->prepare("INSERT INTO test (id, pass, lan) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $id, $pass, $lan);
+
+$id = "sqli";
+$pass = "pwsqli";
+$lan = "mysql";  
+
+$stmt->execute();
+
+printf("%d row inserted.\n", $stmt->affected_rows);
+?>
+```
+
+bind_param 의 "sss" 는 변수들의 자료형을 뜻한다. 
+
+id, pass, lan 모두 String 이므로 "sss"가 된다.
+
+참고로 "i" 는 integer, "d" 는 double 이다.
+
+> mysqli::bind_param() - https://www.php.net/manual/en/mysqli-stmt.bind-param.php
+
+<br><br>
+
+![vmware_VwxL5nVWug](https://user-images.githubusercontent.com/79683414/135415779-eb5cf6a1-83da-4937-886a-9f5e79943378.png)
+
+Query 가 성공적으로 실행되었다.
+
