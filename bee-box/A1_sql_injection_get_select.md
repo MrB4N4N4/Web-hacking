@@ -54,7 +54,9 @@ high는 새로운 내용이었다. high 단계에서는 "header(Location:sqli_2-
 
 <br><br>
 
-SQL 문을 그대로 전달하는 이전 단계들과는 달리 mysqli::bind_param() 메소드가 쓰였다.
+SQL 문을 그대로 전달하는 이전 단계들과는 달리 mysqli::prepare(), mysqli::bind_param() 메소드가 쓰였다.
+
+>[PDO statement](https://www.php.net/manual/en/class.pdostatement.php)
 
 이 메소드는 변수를 Bind 해주는 기능을 하는데 간단히 말하자면,
 
