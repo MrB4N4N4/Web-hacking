@@ -54,15 +54,35 @@ high는 새로운 내용이었다. high 단계에서는 "header(Location:sqli_2-
 
 <br><br>
 
-SQL 문을 그대로 전달하는 이전 단계들과는 달리 mysqli::prepare(), mysqli::bind_param() 메소드가 쓰였다.
+SQL 문을 그대로 전달하는 이전 단계들과는 달리 mysqli::prepare(), mysqli_stmt::bind_param() 메소드가 쓰였다. 위 두 메소드가  Sql query 와 user input 을 분리하여 Injection 을 막는 역할을 한다.
 
+<br>
+
+PHP manual 문서를 읽었을 땐, prepare() 가 SQL query 를 "준비"시킨다는 내용밖에 없었다.
+
+잘 와닿지 않아서 아래의 "How to prevent injection by PDO"을 읽고 궁금증을 해결할 수 있었다.
+
+<br>
+
+prepare statement 동작 방식은 아래의 "How to prevent injction by PDO"를 참고하자.
+
+"?" 를 "palceholder"라고 하는데, 사용자 입력 부분을 "?" 로 설정 하고 prepare 시키면 SQL query 를 먼저 컴파일 해버린다.
+
+그 후에 "Placeholder Replacement" 단계에서 user-data가 "Binding" 된다.
+
+결과적으로 user-data 에 어떤 입력값을 줘도 문자열로 인식된다.
+
+<br>
+
+>[How to prevent injection by PDO](https://www.hackedu.com/blog/how-to-prevent-sql-injection-vulnerabilities-how-prepared-statements-work)
+>
 >[PDO statement](https://www.php.net/manual/en/class.pdostatement.php)
 
-이 메소드는 변수를 Bind 해주는 기능을 하는데 간단히 말하자면,
+<br><br>
+
+bind_param() 메소드는 변수를 Bind 해주는 기능을 하는데 간단히 말하자면,
 
 위의 SQL의 마지막 부분의 "?" 에 id 값을 입력해준다.
-
-조금 더 깊은 이해를 위해 테스트 해보자.
 
 <br><br>![vmware_IUpkFUcQfy](https://user-images.githubusercontent.com/79683414/135410185-45003111-b16d-4936-8c49-193c64f18087.png)
 
