@@ -161,7 +161,7 @@ function xss_check_3($data, $encoding = "UTF-8")
 
 > __Html entity__
 >
->  https://www.w3schools.com/php/func_string_htmlspecialchars.asp
+> https://www.w3schools.com/php/func_string_htmlspecialchars.asp
 
 
 
