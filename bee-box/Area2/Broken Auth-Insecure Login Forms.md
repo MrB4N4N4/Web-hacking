@@ -2,7 +2,7 @@
 
 ![chrome_8NEsVGwJ5O](https://user-images.githubusercontent.com/79683414/136742423-f87a39c4-a8c0-4b60-bfbe-354e7843f168.png)
 
-이번 문제는 HTML 과 JS는 브라우저의 관리자 도구를 통해 그대로 노출된다는 사실을 알려준다. 따라서 노출되면 안되는 코드는 php를 이용하거나 HTML, JS 이외의 것을 이용해야 할 것 같다.
+이번 문제는 HTML 과 JS는 브라우저의 관리자 도구를 통해 그대로 노출된다는 사실을 알려준다. 따라서 노출되면 안되는 코드는 서버사이드 스크립트를 이용해야한다.
 
 <br><br>
 
@@ -19,8 +19,6 @@
 ![chrome_W1O4EE4riI](https://user-images.githubusercontent.com/79683414/136745905-8288daef-02f8-4b2a-9cf7-b6ab11a0f353.png)
 
 <br>
-
-![chrome_7jJs3KtHqD](C:\Users\MrBanana\Documents\ShareX\Screenshots\2021-10\chrome_7jJs3KtHqD.png)
 
 medium 에서는 Name 에 "brucebanner"가 세팅되어있다. 
 
