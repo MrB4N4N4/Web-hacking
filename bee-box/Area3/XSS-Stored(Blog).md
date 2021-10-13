@@ -34,3 +34,61 @@ __Stored XSS__는 '대상 서비스 데이터베이스'에 악성 스크립트�
 
 <br><br>
 
+이렇게만 하면 재미없으니 BeEF 를 이용해 XSS 공격의 위험성을 경험해보자. 
+
+<br><br>
+
+우선 Apache Document Root 인 /var/www/html 에 index.html 을 다음과 같이 교체한 후
+
+(hook.js 는 BeEF의 후킹 파일이다.)
+
+![vmware_iZwGTndLvZ](https://user-images.githubusercontent.com/79683414/137107886-00d03129-41df-4d63-8e8f-5d8dee45acc4.png)
+
+Apache 를 재시작 했다.
+
+```bash
+sudo service apache2 restart
+```
+
+<br><br>
+
+공격자의 웹에 접속하면 자동으로 BeEF의 hook 이 실행된다. 이로 인해 해당 웹에 접속하기만 해도 제어권이 빼앗겨버린다. ㄷㄷ;;
+
+<br>
+
+이제 bWAPP 에 악성 스크립트를 주입할 차례이다. 아래의 스크립트는 자동으로 공격자의 웹 서비스에 접속하도록 한다.
+
+![vmware_GsAmVwqWEa](https://user-images.githubusercontent.com/79683414/137109562-0b3bbad5-69d1-4005-b9f9-9c1bbfafb3f7.png)
+
+<br><br>
+
+위에서 언급했듯, 이제 이 스크립트에 접근할 때 마다 악성 스크립트가 실행된다.
+
+이제 BeEF 를 켜주자.
+
+```bash
+beef-xss
+```
+
+<br>
+
+그 후 다른 호스트에서 bee-box를 접속해서 XSS blog 페이지로 이동해보자.
+
+![Typora_wqyJvEAbs8](https://user-images.githubusercontent.com/79683414/137110796-4b207047-7130-42e6-9a3b-eed39a64e481.png)
+
+![vmware_vf9KgsUK9A](https://user-images.githubusercontent.com/79683414/137111426-b03f592c-0a46-4b07-95ee-134511c94575.png)
+
+<br>
+
+<br>
+미리 설정해둔 hook.js 가 성공적으로 실행되었고 BeEF 웹에 희생자 호스트가 후킹되었다고 표시된다. 후킹에 성공하면 아래와 같이 다양한 공격 커맨드를 실행시킬 수 있는데 Social Engineering 기법으로 위조된 페이지로 접속을 시켜보자.
+
+![vmware_XBbDgd5dTR](https://user-images.githubusercontent.com/79683414/137112181-ccd2d416-9dfc-4b16-8a2a-393847298100.png)
+
+![vmware_hvc20z3FMb](https://user-images.githubusercontent.com/79683414/137112236-0904c448-204e-43b0-8361-c656e6dd3de6.png)
+
+<br><br>
+
+Excute 클릭 시 호스트의 화면에 위조된 페이지가 뜬다 ㄷㄷ;;;
+
+![chrome_TNmDjcGKF4](https://user-images.githubusercontent.com/79683414/137112339-2e9ed175-52a8-4d4d-8b73-27db0bfae1fb.png)
