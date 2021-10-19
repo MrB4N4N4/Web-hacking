@@ -99,7 +99,6 @@ PHP 에 선언한 "$string"값을 script 에 불러오고
 
 JSON.parse 는 JSON String 을 해당하는 객체로 변환해주는 함수이다.
 
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
-
 ![chrome_y1Cx213r35](https://user-images.githubusercontent.com/79683414/137253582-1a2b1318-4fa1-41ef-94e3-a641bd3208b6.png)
 
+> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
