@@ -89,9 +89,9 @@ xml은 태그로 속성값을 나타내지만 JSON 은 문자열로 나타내며
 
 <br><br>
 
-`var JSONResponseString = '<?php echo $string ?>'` 
+`var JSONResponseString = '<?php echo $string ?>'` 를 통해
 
-PHP 에 선언한 "$string"값을 script 에 불러오고 
+PHP 에 선언한 "$string"값을 script에 불러오고 
 
 <br>
 
@@ -101,4 +101,28 @@ JSON.parse 는 JSON String 을 해당하는 객체로 변환해주는 함수이�
 
 ![chrome_y1Cx213r35](https://user-images.githubusercontent.com/79683414/137253582-1a2b1318-4fa1-41ef-94e3-a641bd3208b6.png)
 
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+> __JSON.parse__ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+
+<br><br>
+
+아래는 alert 코드를 삽입했을 때의 상태이다.
+
+<br>
+
+```php
+$string = '{"movies":[{"response":"' . "<script>alert(1);</script>". '??? Sorry, we don&#039;t have that movie :("}]}';
+```
+
+<br>
+
+다음으로 에러가 발생한 부분을 살펴봤다.
+
+```js
+<script>
+    var JSONResponseString = '<?php echo $string ?>';
+    // var JSONResponse = eval ("(" + JSONResponseString + ")");
+    var JSONResponse = JSON.parse(JSONResponseString);
+    document.getElementById("result").innerHTML=JSONResponse.movies[0].response;
+</script>
+```
+
