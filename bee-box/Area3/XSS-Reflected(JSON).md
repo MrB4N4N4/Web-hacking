@@ -115,14 +115,9 @@ $string = '{"movies":[{"response":"' . "<script>alert(1);</script>". '??? Sorry,
 
 <br>
 
-다음으로 에러가 발생한 부분을 살펴봤다.
+에러가 발생한 부분을 다시 살펴보자.
 
-```js
-<script>
-    var JSONResponseString = '<?php echo $string ?>';
-    // var JSONResponse = eval ("(" + JSONResponseString + ")");
-    var JSONResponse = JSON.parse(JSONResponseString);
-    document.getElementById("result").innerHTML=JSONResponse.movies[0].response;
-</script>
-```
+![vmware_YLvaZgLvqj](https://user-images.githubusercontent.com/79683414/138025566-d0f54bed-b1e2-4670-86de-622dbeffcc49.png)
+
+![Code_72T9spndEa](https://user-images.githubusercontent.com/79683414/138026378-9eeec5b1-d376-46c3-b1c4-eae7f5fb7a96.png)
 
