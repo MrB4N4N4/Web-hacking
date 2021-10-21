@@ -115,9 +115,43 @@ $string = '{"movies":[{"response":"' . "<script>alert(1);</script>". '??? Sorry,
 
 <br>
 
+php, js 와 같은 서버사이드 스크립트들은 클라이언트에 Response 하기 전에 실행된다는 것을 염두해 두고
+
 에러가 발생한 부분을 다시 살펴보자.
 
-![vmware_YLvaZgLvqj](https://user-images.githubusercontent.com/79683414/138025566-d0f54bed-b1e2-4670-86de-622dbeffcc49.png)
+![vmware_AVmAxdI7gs](https://user-images.githubusercontent.com/79683414/138199286-34c85f78-a423-4756-b6d1-69acc7e8e617.png)
 
 ![Code_72T9spndEa](https://user-images.githubusercontent.com/79683414/138026378-9eeec5b1-d376-46c3-b1c4-eae7f5fb7a96.png)
 
+<br><br>
+
+삽입한 script 문 뒷 부분부터 출력된 것을 알 수 있다.
+
+출력 결과와 alert문이 실행되지 않은 것으로 볼 때,
+
+alert 문 까지 js 로 취급되고 이후의 것은 html 로 취급된 것 같다.
+
+alert 문이 실행되지 않은 이유는 script 태그가 중복되어서 인듯 하다.
+
+![chrome_CjhRQAiTvT](https://user-images.githubusercontent.com/79683414/138200668-03dd53de-2f5f-454c-9490-8c8d6090e7b4.png)
+
+<br><br>
+
+테스트 결과 Script error 로 alert 문이 실행되지 않고 에러가 발생한 부분이 html 로 취급되어 웹에 출력되고 있다. 테스트 환경에서 'alert(1)' 이 출력된 것은 Bee-Box와 버전 차이로 인한 결과인 것 같다.
+
+<br><br>
+
+그렇다면, 사용자 입력값으로 `</script>`를 추가해주면 스크립트 인젝션 공격을 수행할 수 있을 것이다.
+
+<br><br>
+
+![chrome_A5nVYsK8KR](https://user-images.githubusercontent.com/79683414/138201030-b00581e7-9827-4637-bb7b-303b909c28ad.png)
+
+<br><br>
+
+`</script><script>alert('succeed');</script>`
+
+<br>
+
+![vmware_ostkIYMo1k](https://user-images.githubusercontent.com/79683414/138201237-816f1bba-1ce5-4c32-a8b1-bae766cff347.png)
+![vmware_p4YmQ0Whgx](https://user-images.githubusercontent.com/79683414/138201284-4d5c0c89-0089-42dc-9e91-b019aaf3a228.png)
