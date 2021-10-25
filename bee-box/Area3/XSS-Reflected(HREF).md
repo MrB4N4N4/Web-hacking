@@ -27,7 +27,9 @@ __`<a href="www.google.com">Vote</a>`__
 
 `<a>` 태그는 다른 문서로 이동할 때 사용하는 태그이다. JS 로는
 
-__location.href="www.google.com"__과 같은 동작을 한다.
+__location.href="www.google.com"__
+
+과 같은 동작을 한다.
 
 <br><br>
 
@@ -52,13 +54,13 @@ HTML 태그가 DOM 으로 변환될 때, "브라우저"가 <u>유효하지 않�
 ![vmware_WIXynNl9iZ](https://user-images.githubusercontent.com/79683414/138577246-8f0e5c90-9887-48b4-9092-2a604f1cac80.png)
 ![vmware_fKoRmbSELA](https://user-images.githubusercontent.com/79683414/138577247-dcbdb0d7-5ec5-45bd-9eaf-31c4c8524cbe.png)
 
-<br><br>
+<br>
 
 ???
 
 <br>
 
-입력한 내용이 페이지에 반영되었다. 일단 브라우저의 관리자 도구를 이용해 소스를 살펴보자. 
+입력한 내용이 페이지에 반영되었다. 일단 브라우저의 관리자 도구를 이용해 소스를 살펴보자. <br>
 
 ![vmware_S5PBF1YUnK](https://user-images.githubusercontent.com/79683414/138624204-848bbf0b-504a-417b-8c65-5375efac07c2.png)
 
@@ -70,7 +72,7 @@ HTML 태그가 DOM 으로 변환될 때, "브라우저"가 <u>유효하지 않�
 - `</script>` 닫는 태그가 사라짐.
 - 웹 페이지에 alert 부분부터 Vote 까지 표시됨.
 
-<br><br>
+<br>
 
 Html 이 DOM 으로 변환되기 전 상태를 생각해보면 아래와 같다.
 
@@ -88,15 +90,17 @@ Html 이 DOM 으로 변환되기 전 상태를 생각해보면 아래와 같다.
 
 즉, `<a>` 태그가 닫혀버려서 alert 부터 출력되고 닫는 html 태그는 웹 페이지에 표시되지 않아서 위와 같은 결과가 되었다. 정리하면 아래와 같다.
 
+<br>
+
 ![Code_jOxbfvIIDv](https://user-images.githubusercontent.com/79683414/138631648-c183dd6d-c0ac-497e-a1f5-01f729b6619d.png)
 
-<br><br>
+<br>
 
 조금 더 간단히 하면, 아래와 같은 상황이다.
 
 ![chrome_gX12wntuEc](https://user-images.githubusercontent.com/79683414/138631823-88a54f74-870f-41c3-90dd-9f445df5ee4a.png)
 
-<br><br>
+<br>
 
 원리를 알았으니 이제 페이로드를 수정하면 된다.
 
@@ -106,15 +110,13 @@ DOM Event 속성은 Html event 에 반응하기 위해 JS 를 실행할 수 있�
 
 <br>
 
-<br>
-
 __0 onmouseover=alert("success") a__
 
 <br>
 
 ![Code_jGFWp6hJNg](https://user-images.githubusercontent.com/79683414/138634331-50df1edc-be51-4213-8427-2b6d8d3eed1b.png)
 
-<br><br>
+<br>
 
 위와 같이 입력한 후 Continue 를 누르면 Vote 링크에 마우스를 올리기만 해도 Success 가 표시 될 것이다.
 
