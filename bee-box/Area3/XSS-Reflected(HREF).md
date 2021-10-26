@@ -41,7 +41,7 @@ DOM (Document Object Model)은 웹 페이지에 대한 프로그래밍 인터페
 
 DOM 은 HTML 태그들이 노드 트리 방식으로 표현된다. 이 DOM 을 이용해 콘텐츠, 구조, 스타일 등을 조작할 수 있는, JS 로 접근이 가능한 API 가 제공된다.
 
-지금까지 사용하고 있었던 "document.alert" 등이 DOM 의 API 이다.
+지금까지 사용하고 있었던 "document.cookie" 와 같은 것 들이 DOM 의 API 이다.
 
 HTML 태그가 DOM 으로 변환될 때, "브라우저"가 <u>유효하지 않은 코드들을 올바르게 수정</u>한다.
 
@@ -131,3 +131,18 @@ __0 onmouseover=alert("success") a__
 <br>
 
 __0 onmouseover=alert(document.location="https://www.google.com") a__
+
+
+
+## Thoughts
+
+태그의 속성을 이용한 공격을 처음 접했는데,
+
+이전의 인젝션들은 htmlspecialchars, mysqli_real_escape_string, addslash 등의 필터링 함수를 사용하였지만 이번에는 urlencode() 함수가 상용되었다.
+
+인젝션 공격을 막기 위해서 필터링 함수를 적용할 때, 사용자의 인풋값을 추적하면서
+
+Input 과 Output 을 점검하여 적절한 함수를 사용해야 한다.
+
+필터링을 적용하는 시점도 중요한 것 같다.
+
