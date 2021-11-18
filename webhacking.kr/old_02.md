@@ -83,7 +83,7 @@ SQL 문은 `( )` 로 감싸주지 않으면 의도한 결과를 출력하지 않
 
 2. 테이블 이름 길이 : select length(table_name) from information_schema.tables where table_schema=database() limit 0,1
 
-3.테이블 이름: select ascii(substring(table_name, 1, 1)) from information_schema.tables where table_schema=database() limit 0,1
+3. 테이블 이름: select ascii(substring(table_name, 1, 1)) from information_schema.tables where table_schema=database() limit 0,1
 
 <br>
 
