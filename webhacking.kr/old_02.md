@@ -1,12 +1,3 @@
-<details>
-    <summary>python code</summary>
-
-```python
-from pwn import *
-```
-
-</details>
-
 ## old_02
 
 ![vmware_WWvlGzR1z0](https://user-images.githubusercontent.com/79683414/142334224-11fd6d90-215e-422f-9b0b-0a02034d3036.png)
@@ -146,7 +137,7 @@ _패스워드_
 ```python
 import urllib.request
 
-sid = "h13d928d7pllpr3spvk7aebka3"
+sid = ""	# 세션 ID 값
 cookie = "time=({});PHPSESSID=" + sid
 pre = {
     "count": "select count({}) from {} where {}",
