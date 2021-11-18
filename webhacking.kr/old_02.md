@@ -3,7 +3,7 @@
 
     from pwn import *
 
-
+</details>
 
 ## old_02
 

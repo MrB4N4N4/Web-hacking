@@ -8,6 +8,7 @@ pre = {
     "data": "select ascii(substring({}, 1)) from {} where {} limit {},1"
 }
 
+
 # 쿼리문 수행
 def inject(query):
     url = "https://webhacking.kr/challenge/web-02/"
