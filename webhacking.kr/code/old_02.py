@@ -1,7 +1,7 @@
 import urllib.request
 
 # 쿼리문 수행
-def inject(query):
+def get_reqeust(query):
     url = "https://webhacking.kr/challenge/web-03/index.php"
     req = urllib.request.Request(url)
     res = urllib.request.urlopen(req)
@@ -13,5 +13,6 @@ def inject(query):
 MAX = pow(2, 25)
 
 while MAX:
-    MAX =- 1
-    str(bin(MAX))[2:]
+    MAX -= 1
+    print(str(bin(MAX))[2:])
+    exit()
