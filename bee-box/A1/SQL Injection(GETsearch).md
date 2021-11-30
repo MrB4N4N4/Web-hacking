@@ -6,9 +6,9 @@
 
 - [Concept of SQL injection](#sql-injection-이란)
 
-- [What is UNION?](#UNION-?)
+- [What is UNION?](#union-?)
 - [low](#low)
-- [medium/high](#medium/high)
+- [medium/high](#medium,high)
 - [Advanced](#advanced)
 
 ### _SQL Injection 이란_
@@ -233,7 +233,7 @@ UNION 과 Information_schema 를 적절히 활용하면 원하는 정보를 획�
 
 <br>
 
-## medium/high
+## medium,high
 
 _sqli_1.php_
 
